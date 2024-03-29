@@ -159,9 +159,6 @@ var genResourcesCmd = &cobra.Command{
 				os.Exit(1)
 			}
 
-			if structureDefinition.Name == "MedicationRequest" {
-				fmt.Println("Yes!")
-			}
 			if (structureDefinition.Kind == fhir.StructureDefinitionKindResource) &&
 				structureDefinition.Name != "Element" &&
 				structureDefinition.Name != "BackboneElement" {
