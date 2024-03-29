@@ -1,4 +1,4 @@
-module github.com/samply/golang-fhir-models/fhir-models-gen
+module github.com/lucemhealth/golang-fhir-models/fhir-models-gen
 
 go 1.19
 
