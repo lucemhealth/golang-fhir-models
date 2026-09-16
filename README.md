@@ -21,6 +21,14 @@ In your project, import `github.com/samply/golang-fhir-models/fhir-models/fhir` 
 
 This repository contains two Go modules, the generated models itself and the generator. Both modules use `go generate` to generate the FHIR models. For `go generate` to work, you have to install the generator first. To do that, run `go install` in the `fhir-models-gen` directory. After that, you can regenerate the FHIR Models under `fhir-models` and the subset of FHIR models under `fhir-models-gen`.
 
+### Overriding Generated CodeSystems
+
+`fhir-models-gen/gen-resources.sh` downloads the official FHIR spec from hl7.org and feeds it to the generator, so a plain re-run always reflects the upstream spec. To add or change codes that aren't part of the upstream spec (e.g. a locally required enum value), add a full CodeSystem resource JSON file under `fhir-models-gen/overrides/` instead of hand-editing the generated `*.go` file.
+
+`gen-resources.sh` copies every file in `overrides/` into the working directory with a `zz-` filename prefix right before running `go generate ./fhir`. The generator indexes CodeSystems by canonical URL as it walks the directory in lexical order, and later files win, so a `zz-`-prefixed override always takes precedence over the downloaded spec files. Give your override the same `url` (and `version`, if the upstream CodeSystem has one) as the CodeSystem you're extending, and include the full set of concepts you want generated (both the original codes and your additions) since the override replaces the CodeSystem entirely rather than merging with it.
+
+See `fhir-models-gen/overrides/administrative-gender-codesystem.json` for an example that adds a `nonbinary` code to `AdministrativeGender`.
+
 ## License
 
 Copyright 2019 - 2022 The Samply Community
