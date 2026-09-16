@@ -31,6 +31,7 @@ const (
 	AdministrativeGenderFemale
 	AdministrativeGenderOther
 	AdministrativeGenderUnknown
+	AdministrativeGenderNonbinary
 )
 
 func (code AdministrativeGender) MarshalJSON() ([]byte, error) {
@@ -47,6 +48,8 @@ func (code *AdministrativeGender) UnmarshalJSON(json []byte) error {
 		*code = AdministrativeGenderOther
 	case "unknown":
 		*code = AdministrativeGenderUnknown
+	case "nonbinary":
+		*code = AdministrativeGenderNonbinary
 	default:
 		return fmt.Errorf("unknown AdministrativeGender code `%s`", s)
 	}
@@ -65,6 +68,8 @@ func (code AdministrativeGender) Code() string {
 		return "other"
 	case AdministrativeGenderUnknown:
 		return "unknown"
+	case AdministrativeGenderNonbinary:
+		return "nonbinary"
 	}
 	return "<unknown>"
 }
@@ -78,6 +83,8 @@ func (code AdministrativeGender) Display() string {
 		return "Other"
 	case AdministrativeGenderUnknown:
 		return "Unknown"
+	case AdministrativeGenderNonbinary:
+		return "Nonbinary"
 	}
 	return "<unknown>"
 }
@@ -91,6 +98,8 @@ func (code AdministrativeGender) Definition() string {
 		return "Other."
 	case AdministrativeGenderUnknown:
 		return "Unknown."
+	case AdministrativeGenderNonbinary:
+		return "Nonbinary."
 	}
 	return "<unknown>"
 }
