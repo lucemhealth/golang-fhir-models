@@ -1,0 +1,21 @@
+{
+  "resourceType": "CodeSystem",
+  "id": "administrative-gender",
+  "url": "http://hl7.org/fhir/administrative-gender",
+  "version": "4.0.1",
+  "name": "AdministrativeGender",
+  "title": "AdministrativeGender",
+  "status": "active",
+  "experimental": false,
+  "description": "The gender of a person used for administrative purposes. Locally extended with a `nonbinary` code that is not part of the upstream HL7 CodeSystem.",
+  "caseSensitive": true,
+  "valueSet": "http://hl7.org/fhir/ValueSet/administrative-gender",
+  "content": "complete",
+  "concept": [
+    { "code": "male", "display": "Male", "definition": "Male." },
+    { "code": "female", "display": "Female", "definition": "Female." },
+    { "code": "other", "display": "Other", "definition": "Other." },
+    { "code": "unknown", "display": "Unknown", "definition": "Unknown." },
+    { "code": "nonbinary", "display": "Nonbinary", "definition": "Nonbinary." }
+  ]
+}
